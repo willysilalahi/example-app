@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\AdminModel;
+use App\Models\ProductModel;
 use App\Models\RoleModel;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -58,6 +59,59 @@ class TestSeeder extends Seeder
                 'name' => 'Jihan 2',
                 'email' => 'samsul@mail.com',
                 'password' => '123456',
+            ],
+        ]);
+
+        ProductModel::insert([
+            [
+                'name' => 'Product',
+                'status' => 1,
+                'price' => 20000
+            ],
+            [
+                'name' => 'Product',
+                'status' => 1,
+                'price' => 20000
+            ],
+            [
+                'name' => 'Product',
+                'status' => 1,
+                'price' => 20000
+            ],
+            [
+                'name' => 'Product',
+                'status' => 1,
+                'price' => 20000
+            ],
+            [
+                'name' => 'Product',
+                'status' => 1,
+                'price' => 20000
+            ],
+            [
+                'name' => 'Product',
+                'status' => 1,
+                'price' => 20000
+            ],
+            [
+                'name' => 'Product',
+                'status' => 1,
+                'price' => 20000
+            ],
+            [
+                'name' => 'Product',
+                'status' => 1,
+                'price' => 20000
+            ],
+            [
+                'name' => 'Product',
+                'status' => 1,
+                'price' => 20000
+            ],
+            [
+                'name' => 'Product',
+                'status' => 1,
+                'price' => 20000
             ],
         ]);
     }
