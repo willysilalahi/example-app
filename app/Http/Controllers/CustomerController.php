@@ -31,6 +31,11 @@ class CustomerController extends Controller
         return redirect('login');
     }
 
+    function test()
+    {
+        return view('test');
+    }
+
     function loginPost(Request $request)
     {
         $credentials = $request->validate([

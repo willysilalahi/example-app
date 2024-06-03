@@ -10,6 +10,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\CustomCssFile;
 Route::get('/', CustomerController::class, 'index');
 Route::get('/login', [CustomerController::class, 'login'])->name('login.view');
 Route::get('/logout', [CustomerController::class, 'logout'])->name('logout');
+Route::get('/test', [CustomerController::class, 'test'])->name('test');
 Route::post('/login', [CustomerController::class, 'loginPost'])->name('login');
 
 Route::middleware([CheckToken::class])->group(function () {
