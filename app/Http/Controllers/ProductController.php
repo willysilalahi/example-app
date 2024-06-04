@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Helper\Helper;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\ProductModel;
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class ProductController extends Controller
 {
@@ -58,9 +63,35 @@ class ProductController extends Controller
         $product = ProductModel::orderByDesc('id')->take(10)->get();
         return response([
             'status' => true,
-            'message' => 'Success get product data',
+            'message' => 'Success get product data lee',
             'data' => $product
         ]);
+    }
+
+    public function login(UserRequest $request)
+    {
+        $validated = $request->validated();
+
+        if (Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
+            $user = Auth::user();
+
+            if ($user instanceof User) {
+                $tokenResult = $user->createToken('Token');
+                $token = $tokenResult->accessToken;
+
+                $response = [
+                    'token' => $token,
+                    'user' => $user
+                ];
+
+                return response($response, 200);
+            } else {
+                return response(['message' => 'Invalid user type'], 422);
+            }
+        } else {
+            $response = ["message" => 'Invalid email or password'];
+            return response($response, 422);
+        }
     }
 
     function createProducts(ProductRequest $request)
